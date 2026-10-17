@@ -1,42 +1,43 @@
 "use client";
 
+import { useForm } from "@formspree/react";
 import { Check } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { company } from "../site-content";
 
+type RequestFormFields = {
+  requestType: string;
+  name: string;
+  company: string;
+  email: string;
+  message: string;
+  subject: string;
+};
+
+const formId = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID ?? "";
+
 export default function RequestForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const [configurationError, setConfigurationError] = useState(false);
+  const [state, handleSubmit] = useForm<RequestFormFields>(formId || "missing-form-id");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
+    if (!formId) {
+      event.preventDefault();
+      setConfigurationError(true);
+      return;
+    }
 
-    const data = new FormData(event.currentTarget);
-    const requestType = String(data.get("requestType") || "General inquiry");
-    const name = String(data.get("name") || "");
-    const client = String(data.get("client") || "");
-    const email = String(data.get("email") || "");
-    const details = String(data.get("details") || "");
-    const subject = `${requestType} from ${client || name}`;
-    const body = [
-      `Request type: ${requestType}`,
-      `Name: ${name}`,
-      `Company: ${client}`,
-      `Email: ${email}`,
-      "",
-      "Project details:",
-      details,
-    ].join("\n");
-
-    setSubmitted(true);
-    window.location.href = `mailto:${company.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    void handleSubmit(event);
   }
 
   return (
-    <form className="request-form" onSubmit={handleSubmit}>
+    <form className="request-form" onSubmit={handleFormSubmit}>
       <div className="request-form__intro">
         <h3>Tell us what your facility needs.</h3>
-        <p>Request a quotation, a site assessment, or rental equipment by email.</p>
+        <p>Request a quotation, a site assessment, or rental equipment through our inquiry form.</p>
       </div>
+
+      <input name="subject" type="hidden" value="CATZ Industrial {{ requestType }} from {{ name }}" />
 
       <fieldset className="request-form__fieldset">
         <legend>What do you need?</legend>
@@ -63,7 +64,7 @@ export default function RequestForm() {
         </label>
         <label className="field">
           <span>Company</span>
-          <input name="client" type="text" autoComplete="organization" suppressHydrationWarning />
+          <input name="company" type="text" autoComplete="organization" suppressHydrationWarning />
         </label>
       </div>
 
@@ -74,20 +75,26 @@ export default function RequestForm() {
 
       <label className="field">
         <span>Project details *</span>
-          <textarea name="details" rows={4} required placeholder="Include the equipment, scope, and site or location details." suppressHydrationWarning />
+        <textarea name="message" rows={4} required placeholder="Include the equipment, scope, and site or location details." suppressHydrationWarning />
       </label>
 
       <div className="request-form__footer">
-        <button className="button button--dark" type="submit" suppressHydrationWarning>
-          Submit
+        <button className="button button--dark" type="submit" disabled={state.submitting || state.succeeded} suppressHydrationWarning>
+          {state.submitting ? "Sending..." : state.succeeded ? "Sent" : "Submit"}
         </button>
-        {submitted ? (
-          <p className="request-form__status" role="status">
-            <Check size={16} strokeWidth={1.8} aria-hidden="true" /> Your email app should open with the request details.
+        {state.succeeded ? (
+          <p className="request-form__status" role="status" aria-live="polite">
+            <Check size={16} strokeWidth={1.8} aria-hidden="true" /> Thanks. Your request has been sent.
           </p>
-        ) : (
-          <p className="request-form__note">Your email app will open with the request. Nothing is stored on this website.</p>
-        )}
+        ) : state.errors ? (
+          <p className="request-form__status" role="alert">
+            We couldn&apos;t send your request. Please try again or email us at <a href={`mailto:${company.email}`}>{company.email}</a>.
+          </p>
+        ) : configurationError ? (
+          <p className="request-form__status" role="alert">
+            The online form is not configured yet. Please email us at <a href={`mailto:${company.email}`}>{company.email}</a>.
+          </p>
+        ) : null}
       </div>
     </form>
   );

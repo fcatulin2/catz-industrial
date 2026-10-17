@@ -5,10 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "npx --yes serve out",
+    "lint": "eslint",
+    "deploy:cloudflare": "npm run build && npx --yes wrangler pages deploy out --project-name catz-industrial"
   },
   "dependencies": {
+    "@formspree/react": "^3.0.0",
     "lucide-react": "^1.57.0",
     "next": "16.4.1",
     "react": "19.3.0",
