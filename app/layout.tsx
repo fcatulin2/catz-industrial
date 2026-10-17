@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { company, companyProfile, leadership, services, serviceArea, siteUrl } from "./site-content";
+import { company, companyProfile, industries, leadership, services, serviceArea, siteUrl } from "./site-content";
 
 const pageTitle = "CATZ Industrial | Mechanical Services & Equipment Rental";
 const pageDescription =
-  "CATZ Industrial provides mechanical services for plant maintenance and equipment rental for industrial facilities in Batangas and across the Philippines.";
+  "CATZ Industrial OPC provides mechanical works for plant maintenance and equipment rental for asset owners and EPC contractors in critical industrial facilities.";
 
 const organizationId = `${siteUrl}#organization`;
 
@@ -32,11 +32,12 @@ const jsonLd = {
         contactType: "sales",
         email: company.email,
         telephone: company.phone,
-        areaServed: "PH",
+        areaServed: serviceArea,
         availableLanguage: "en",
       },
       knowsAbout: [
         ...services.map((service) => service.title),
+        ...industries.map((industry) => industry.name),
         "Plant maintenance",
         "Static and rotating equipment",
       ],

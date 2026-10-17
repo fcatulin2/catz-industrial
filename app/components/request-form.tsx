@@ -35,7 +35,7 @@ export default function RequestForm() {
     <form className="request-form" onSubmit={handleSubmit}>
       <div className="request-form__intro">
         <h3>Tell us what your facility needs.</h3>
-        <p>Send a concise request to the CATZ team by email.</p>
+        <p>Request a quotation, a site assessment, or rental equipment by email.</p>
       </div>
 
       <fieldset className="request-form__fieldset">
@@ -46,8 +46,8 @@ export default function RequestForm() {
             <span>Quotation</span>
           </label>
           <label>
-            <input type="radio" name="requestType" value="Request for site visit" suppressHydrationWarning />
-            <span>Site visit</span>
+            <input type="radio" name="requestType" value="Request for site assessment" suppressHydrationWarning />
+            <span>Site assessment</span>
           </label>
           <label>
             <input type="radio" name="requestType" value="Equipment rental inquiry" suppressHydrationWarning />
