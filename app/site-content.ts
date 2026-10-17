@@ -146,32 +146,32 @@ export const equipment = [
 export const representativeGallery = [
   {
     title: "Rotating equipment",
-    image: "/site-media/projects/gallery-01.png",
+    image: "/site-media/projects/gallery-01.webp",
     alt: "Industrial rotating equipment opened for maintenance",
   },
   {
     title: "Valve and piping systems",
-    image: "/site-media/projects/gallery-02.png",
+    image: "/site-media/projects/gallery-02.webp",
     alt: "Technician working on industrial piping",
   },
   {
     title: "Industrial fabrication",
-    image: "/site-media/projects/gallery-03.png",
+    image: "/site-media/projects/gallery-03.webp",
     alt: "Industrial fabrication work",
   },
   {
     title: "Field coordination",
-    image: "/site-media/projects/gallery-04.png",
+    image: "/site-media/projects/gallery-04.webp",
     alt: "Industrial workers coordinating work at a plant site",
   },
   {
     title: "Plant inspection",
-    image: "/site-media/projects/gallery-05.png",
+    image: "/site-media/projects/gallery-05.webp",
     alt: "Maintenance team inspecting industrial equipment",
   },
   {
     title: "Site execution",
-    image: "/site-media/projects/gallery-06.png",
+    image: "/site-media/projects/gallery-06.webp",
     alt: "Industrial worker carrying out field work at a facility",
   },
 ] as const;
