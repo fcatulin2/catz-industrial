@@ -35,6 +35,9 @@ yarn-error.log*
 .env*
 !.env.example
 
+# Large company documents stay local and are not deployed from this repository.
+company_details/*.pdf
+
 # vercel
 .vercel
 
