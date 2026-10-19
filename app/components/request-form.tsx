@@ -10,6 +10,7 @@ type RequestFormFields = {
   name: string;
   company: string;
   email: string;
+  phone: string;
   message: string;
   subject: string;
 };
@@ -71,6 +72,11 @@ export default function RequestForm() {
       <label className="field">
         <span>Email *</span>
         <input name="email" type="email" autoComplete="email" required suppressHydrationWarning />
+      </label>
+
+      <label className="field">
+        <span>Contact number *</span>
+        <input name="phone" type="tel" autoComplete="tel" inputMode="tel" required suppressHydrationWarning />
       </label>
 
       <label className="field">
