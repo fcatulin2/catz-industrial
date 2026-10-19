@@ -72,7 +72,7 @@ export default function Home() {
             <Reveal className="about-grid__image">
               <div className="media-frame media-frame--portrait">
                 <Image
-                  src="/site-media/ferdinand-catulin.webp"
+                  src="/site-media/ferdinand-catulin-clean.webp"
                   alt="Ferdinand Catulin II, Founder and General Manager of CATZ Industrial"
                   fill
                   sizes="(max-width: 760px) 100vw, 48vw"
