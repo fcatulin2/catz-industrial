@@ -18,14 +18,14 @@ export default function BrandLockup({ className = "", preserveTriangle = false }
         >
           <image
             className="brand-lockup__base-layer"
-            href="/site-media/catz-logo-full.png"
+            href="/site-media/catz-logo-full-v2.png"
             width="1724"
             height="912"
             preserveAspectRatio="none"
           />
           <image
             className="brand-lockup__white-layer"
-            href="/site-media/catz-logo-dark.png"
+            href="/site-media/catz-logo-dark-v2.png"
             width="1724"
             height="912"
             preserveAspectRatio="none"
@@ -34,7 +34,7 @@ export default function BrandLockup({ className = "", preserveTriangle = false }
       ) : (
         <Image
           className="brand-lockup__image"
-          src="/site-media/catz-logo-full.png"
+          src="/site-media/catz-logo-full-v2.png"
           alt="CATZ Industrial - Specialized Industrial Services"
           width={1724}
           height={912}

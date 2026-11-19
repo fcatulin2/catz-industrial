@@ -19,7 +19,7 @@ const jsonLd = {
       url: siteUrl,
       logo: {
         "@type": "ImageObject",
-        url: `${siteUrl}/site-media/catz-logo-full.png`,
+        url: `${siteUrl}/site-media/catz-logo-full-v2.png`,
       },
       image: `${siteUrl}/site-media/hero-plant.webp`,
       description: companyProfile.overview,
