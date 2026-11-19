@@ -295,6 +295,7 @@ h3 {
 
 .brand-lockup__base-layer,
 .brand-lockup__white-layer,
+.brand-lockup__separator-layer,
 .brand-lockup__triangle-layer {
   pointer-events: none;
 }
@@ -307,6 +308,10 @@ h3 {
   filter: none;
   opacity: 1;
   pointer-events: none;
+}
+
+.brand-lockup__separator-layer {
+  fill: var(--color-white);
 }
 
 .page-loader {
