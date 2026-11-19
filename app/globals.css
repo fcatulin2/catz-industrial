@@ -294,24 +294,12 @@ h3 {
 }
 
 .brand-lockup__base-layer,
-.brand-lockup__white-layer,
-.brand-lockup__separator-layer,
-.brand-lockup__triangle-layer {
+.brand-lockup__white-layer {
   pointer-events: none;
 }
 
 .brand-lockup__base-layer {
   opacity: 0;
-}
-
-.brand-lockup__triangle-layer {
-  filter: none;
-  opacity: 1;
-  pointer-events: none;
-}
-
-.brand-lockup__separator-layer {
-  fill: var(--color-white);
 }
 
 .page-loader {
